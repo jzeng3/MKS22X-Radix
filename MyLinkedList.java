@@ -27,7 +27,7 @@ public class MyLinkedList<E>{
     start = null;
     end = null;
   }
-// adding to the end of the list
+// add to the end of the list and return true
   public boolean add(E value){
     // create new Node<E> with data as value
     Node<E> adding = new Node<E>(null, value, null);
@@ -43,29 +43,35 @@ public class MyLinkedList<E>{
       end.setNext(adding);
       end = adding;
     }
+    // update size of the list and return true
     length++;
-    //System.out.println("start: "+start);
-    //System.out.println("end: "+end);
     return true;
   }
 
   // remove the first element from the list and return the element
   public E removeFront(){
+    // throw exception if list is empty
     if (size() == 0){
       throw new IndexOutOfBoundsException("");
     }
+    // temporary node holds the start element
     Node<E> current = start;
+    // oldValue holds value of start element
     E oldValue = current.getData();
+      // if list only has 1 element, set start and end nodes to null
       if (size() == 1){
         start = null;
         end = null;
       }
+      // otherwise, set next element as the start node
+      // point the previous node of the start node to null
       else{
       start = current.next();
-      //System.out.println("set start to "+start.debug());
       start.setPrev(null);
       }
+      // update the size of the list
     length--;
+    // return value of the original start element
     return oldValue;
   }
 
@@ -93,20 +99,6 @@ public class MyLinkedList<E>{
      other.start = null;
      other.end = null;
    }
-
-// loop through list and return Node<E> at specified index
-  private Node<E> getNthNode(int index){
-    if (index < 0 || index >= size()){
-      throw new IndexOutOfBoundsException("Index cannot be " + index);
-    }
-    else{
-    Node<E> current = start;
-    for (int i = 0; i < index; i++){
-      current = current.next();
-    }
-    return current;
-    }
-  }
 
 // print value of every Node<E> in the list
   public String toString(){
@@ -162,38 +154,42 @@ class Node<E>{
   Node<E> prev;
   Node<E> next;
 
+  // initiate node with previous node, this node value, and next node
   public Node(Node<E> _prev, E _data, Node<E> _next){
     data = _data;
     setPrev(_prev);
     setNext(_next);
   }
-
+  // return next node
   public Node<E> next(){
     return next;
   }
-
+  // return previous node
   public Node<E> prev(){
     return prev;
   }
-
+  // set previous node to specified node
   public void setPrev(Node<E> _prev){
     prev = _prev;
   }
+  // set next node to specified node
   public void setNext(Node<E> _next){
     next = _next;
   }
-
+  // return value of the current node
   public E getData(){
     return data;
   }
-
+  // set value of current node to specified value
   public void setData(E _data){
     data = _data;
   }
+  // return value of the node as a string
   public String toString(){
     return ""+data;
   }
 
+  // return previous, current, and next nodes as a string
   public String debug(){
     String NodeStr = "";
     if (prev() == null){
