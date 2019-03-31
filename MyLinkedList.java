@@ -35,7 +35,6 @@ public class MyLinkedList<E>{
       if (size() == 0){
         start = adding;
         end = adding;
-        // System.out.println("start ");
       }
     else{
       // end points to adding, which becomes the end of the list
@@ -45,6 +44,8 @@ public class MyLinkedList<E>{
       end = adding;
     }
     length++;
+    //System.out.println("start: "+start);
+    //System.out.println("end: "+end);
     return true;
   }
 
@@ -55,8 +56,15 @@ public class MyLinkedList<E>{
     }
     Node<E> current = start;
     E oldValue = current.getData();
+      if (size() == 1){
+        start = null;
+        end = null;
+      }
+      else{
       start = current.next();
+      //System.out.println("set start to "+start.debug());
       start.setPrev(null);
+      }
     length--;
     return oldValue;
   }
