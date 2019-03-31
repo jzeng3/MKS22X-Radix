@@ -10,9 +10,17 @@ public class Driver{
       test.removeFront();
       System.out.println(test.size()+": ");
       System.out.println(test);
-      if (i == 18){
-        System.out.println(test.toStringDebug());
-      }
     }
+    test.clear();
+    System.out.println(test.size()+": ");
+    System.out.println(test);
+    for (int i = 0; i < 20; i++){
+      test.add(i);
+      System.out.println(test.size()+": ");
+      System.out.println(test);
+    }
+    test.clear();
+    System.out.println(test.size()+": ");
+    System.out.println(test);
   }
 }
