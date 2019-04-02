@@ -12,17 +12,18 @@ public class Radix{
     for (int i = 0; i < 20; i++){
       buckets[i] = new MyLinkedList<Integer>();
     }
-    System.out.println("bucket size:"+buckets.length);
+
+    System.out.println("bucket size: "+buckets.length);
 
     for (int i = 0; i < data.length; i++){
       if (data[i]%digit > 0){
         System.out.println(data[i]%digit);
-        buckets[10 + data[i]%digit].add(data[i]);
+        buckets[10 + data[i]%digit].addEnd( data[i] );
         System.out.println(buckets[ 10 + data[i]%digit ]);
       }
       else{
         System.out.println(data[i]%digit);
-        buckets[9 - data[i]%digit].add(data[i]);
+        buckets[9 + data[i]%digit].addFront(data[i]);
         System.out.println(buckets[9 - data[i]%digit]);
       }
     }
@@ -30,6 +31,7 @@ public class Radix{
     for (int i = 0; i < 20; i++){
       if (buckets[i].size() > 0){
         merged.extend( buckets[i] );
+        System.out.println( buckets[i] );
       }
     }
     System.out.println( merged );

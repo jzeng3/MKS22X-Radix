@@ -27,8 +27,24 @@ public class MyLinkedList<E>{
     start = null;
     end = null;
   }
+  public boolean addFront(E value){
+    Node<E> adding = new Node<E>(null, value, null);
+     if (size() == 0){
+       start = adding;
+       end = adding;
+       length++;
+       // System.out.println("start ");
+     }
+     else{
+       adding.setNext(start);
+       start.setPrev(adding);
+       start = adding;
+       length++;
+     }
+    return true;
+  }
 // add to the end of the list and return true
-  public boolean add(E value){
+  public boolean addEnd(E value){
     // create new Node<E> with data as value
     Node<E> adding = new Node<E>(null, value, null);
     // if list is empty, start and end point to adding
