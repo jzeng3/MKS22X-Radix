@@ -1,6 +1,10 @@
 public class Driver{
   public static void main(String[] args){
-    MyLinkedList<Integer> test = new MyLinkedList<Integer>();
+    int[] testing = {0,5,2,34,4,6,7,8,2,4,-12,4,5,6,-15,-167,-1000};
+    Radix.radixsort(testing);
+
+  /*  MyLinkedList<Integer> test = new MyLinkedList<Integer>();
+
     // testing add
     for (int i = 0; i < 20; i++){
       test.add(i);
@@ -54,6 +58,6 @@ public class Driver{
 
    listB.extend(listA);
    System.out.println(listA);
-   System.out.println(listB);
+   System.out.println(listB);*/
   }
 }
