@@ -1,11 +1,14 @@
 import java.util.*;
 import java.io.*;
 
-public class MyLinkedList<E>{
+public class MyLinkedList<E> implements Iterable<E>{
   Node<E> start;
   Node<E> end;
   int length;
 
+  public Iterator<E> iterator(){
+    return new MyLinkedListIterator<E>(this);
+  }
 // makes an empty list
   public MyLinkedList(){
     length = 0;
@@ -94,10 +97,10 @@ public class MyLinkedList<E>{
   // connect the OTHER list to the end of THIS list, then reset other list size to 0
    public void extend (MyLinkedList<E> other){
      if (this.size() == 0){
-       //System.out.println("You're in the first if statement");
+
        length += other.size();
        Node<E> temp = new Node<E>(null, null, null);
-       //System.out.println(temp.debug());
+
        start = temp;
        end = temp;
        start.setNext(other.start);
@@ -111,9 +114,7 @@ public class MyLinkedList<E>{
      length += other.size();
      this.end = other.end;
      }
-     other.setSize(0);
-     other.start = null;
-     other.end = null;
+     other.clear();
    }
 
 // print value of every Node<E> in the list
@@ -131,6 +132,7 @@ public class MyLinkedList<E>{
     list+= "]";
     return list;
   }
+
 // toString for elements in reverse, tests prev() linking
   public String toStringReverse(){
     String list = "";
@@ -221,4 +223,24 @@ class Node<E>{
   return NodeStr;
   }
 
+}
+
+class MyLinkedListIterator<E> implements Iterator<E>{
+  MyLinkedList<E> data;
+  Node<E> current;
+  public MyLinkedListIterator(MyLinkedList<E> list){
+    data = list;
+    current = list.start;
+  }
+  public E next(){
+    E value = current.getData();
+    current = current.next();
+    return value;
+  }
+  public boolean hasNext(){
+    if (current.next() != null){
+      return true;
+    }
+    return false;
+  }
 }
