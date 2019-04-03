@@ -241,6 +241,11 @@ class MyLinkedListIterator<E> implements Iterator<E>{
     if (current.next() != null){
       return true;
     }
+    reset();
     return false;
+  }
+
+  public void reset(){
+    current = list.start;
   }
 }

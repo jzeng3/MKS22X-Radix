@@ -1,19 +1,26 @@
 import java.util.*;
 public class Driver{
   public static void main(String[] args){
-    int[] testing = {0,-17,5,8,-332,4,-12,-32,-15,-25,-167,-1000};
+/*    int[] testing = {0,-17,5,8,-332,4,-12,-32,-15,-25,-167,-1000};
     int[] testing1 = {0,-17,5,8,-332,4,-12,-32,-15,-25,-167,-1000};
     System.out.println(Arrays.toString(testing));
     Radix.radixsort(testing);
     System.out.println(Arrays.toString(testing));
     Arrays.sort(testing1);
     System.out.println(Arrays.toString(testing1));
-    System.out.println(Arrays.toString(testing).equals(Arrays.toString(testing1)));
-  /*  MyLinkedList<Integer> test = new MyLinkedList<Integer>();
+    System.out.println(Arrays.toString(testing).equals(Arrays.toString(testing1)));*/
+    MyLinkedList<Integer> merged = new MyLinkedList<Integer>();
     for (int i = 0; i < 20; i++){
-      test.addFront(i);
-      System.out.println(test);
-    }*/
+      merged.addFront(i);
+      System.out.println(merged);
+    }
+
+    for(Iterator<Integer> iter = merged.iterator(); iter.hasNext() ; ){
+        Integer number = iter.next();
+        System.out.println(number);
+        /* check if the removed element is positive or negative, then add to the end of the appropriate bucket
+        for the value of the current digits place of the element*/
+    }
 
   /*  // testing add
     for (int i = 0; i < 20; i++){

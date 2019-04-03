@@ -56,28 +56,24 @@ public class Radix{
 
     // While there are still digits to sort
     while (maxDigits > 0){
-
-      // While the merged linked list still has elements
-      while (merged.size() > 0){
-        // remove the first element in the merged list and keep track of its value
-        int removed = merged.removeFront();
-        /* check if the removed element is positive or negative, then add to the end of the appropriate bucket
-        for the value of the current digits place of the element*/
-        if (removed >= 0){
-          buckets[10 + ( (removed / digit) % 10)].addEnd( removed );
-        }
-        else{
-          buckets[9 + ( (removed / digit) % 10)].addEnd(removed);
-        }
-
+      for(Iterator<Integer> iter = merged.iterator(); iter.hasNext() ; ){
+          Integer number = iter.next();
+          System.out.println(number);
+          /* check if the removed element is positive or negative, then add to the end of the appropriate bucket
+          for the value of the current digits place of the element*/
+          if (number >= 0){
+            buckets[10 + ( (number / digit) % 10)].addEnd( number );
+          }
+          else{
+            buckets[9 + ( (number / digit) % 10)].addEnd(number);
+          }
       }
+      merged.clear();
 
       // Loop through buckets and merge non-empty lists to the merged linked list
       for (int i = 0; i < 20; i++){
         if (buckets[i].size() > 0){
-
           merged.extend( buckets[i] );
-
         }
       }
 
