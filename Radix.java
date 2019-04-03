@@ -56,9 +56,10 @@ public class Radix{
 
     // While there are still digits to sort
     while (maxDigits > 0){
-      for(Iterator<Integer> iter = merged.iterator(); iter.hasNext() ; ){
+  
+     for(Iterator<Integer> iter = merged.iterator(); iter.hasNext() ; ){
           Integer number = iter.next();
-          System.out.println(number);
+
           /* check if the removed element is positive or negative, then add to the end of the appropriate bucket
           for the value of the current digits place of the element*/
           if (number >= 0){

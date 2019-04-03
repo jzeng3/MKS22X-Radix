@@ -230,7 +230,7 @@ class MyLinkedListIterator<E> implements Iterator<E>{
   Node<E> current;
   public MyLinkedListIterator(MyLinkedList<E> list){
     data = list;
-    current = list.start;
+    current = data.start;
   }
   public E next(){
     E value = current.getData();
@@ -238,14 +238,13 @@ class MyLinkedListIterator<E> implements Iterator<E>{
     return value;
   }
   public boolean hasNext(){
-    if (current.next() != null){
+    if (current != null){
       return true;
     }
-    reset();
     return false;
   }
 
   public void reset(){
-    current = list.start;
+    current = data.start;
   }
 }
