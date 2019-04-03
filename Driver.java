@@ -1,11 +1,21 @@
+import java.util.*;
 public class Driver{
   public static void main(String[] args){
-    int[] testing = {0,5,2,34,4,6,7,8,2,4,-12,4,5,6,-15,-167,-1000};
+    int[] testing = {0,-17,5,8,-332,4,-12,-32,-15,-25,-167,-1000};
+    int[] testing1 = {0,-17,5,8,-332,4,-12,-32,-15,-25,-167,-1000};
+    System.out.println(Arrays.toString(testing));
     Radix.radixsort(testing);
-
+    System.out.println(Arrays.toString(testing));
+    Arrays.sort(testing1);
+    System.out.println(Arrays.toString(testing1));
+    System.out.println(Arrays.toString(testing).equals(Arrays.toString(testing1)));
   /*  MyLinkedList<Integer> test = new MyLinkedList<Integer>();
+    for (int i = 0; i < 20; i++){
+      test.addFront(i);
+      System.out.println(test);
+    }*/
 
-    // testing add
+  /*  // testing add
     for (int i = 0; i < 20; i++){
       test.add(i);
       System.out.println(test.size()+": ");
